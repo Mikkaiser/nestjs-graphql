@@ -1,3 +1,4 @@
+import { Users } from './users/models/user.entity';
 import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -15,8 +16,8 @@ import { UsersModule } from './users/users.module';
       port: 3306,
       username: 'root',
       password: 'root',
-      database: 'graphql',
-      entities: [],
+      database: 'db_graphql',
+      entities: [Users],
       synchronize: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
