@@ -1,10 +1,18 @@
 version: '3.1'
 services:
-  db:
-    image: mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: test_db
+  api:
+    container_name: nestjs-graphql-api
+    build: .
     ports:
-      - "3307:3306"
+      - '3333:3333'
+    volumes:
+      - .:/usr/src
+
+  db:
+    container_name: nestjs-graphql-db
+    image: mysql:5.7
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'db_graphql'
